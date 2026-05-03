@@ -2,7 +2,7 @@
 
 A modern tile showcase website built with Next.js where users can browse, search, and explore premium ceramic, marble, and mosaic tiles.
 ## Live URL
-https://tiles-gallery.vercel.app
+ https://tiles-v2.vercel.app
 
 ## Key Features
 - Browse and search tiles by title
