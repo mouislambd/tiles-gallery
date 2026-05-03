@@ -1,101 +1,210 @@
-import Image from "next/image";
+// 'use client';
+// import { useEffect, useState } from 'react';
+// import Link from 'next/link';
+// import TileCard from '@/components/TileCard';
+// import Navbar from '@/components/Navbar';
+// import Footer from '@/components/Footer';
 
-export default function Home() {
+// export default function HomePage() {
+//   const [tiles, setTiles] = useState([]);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     fetch('http://localhost:5000/tiles')
+//       .then(res => res.json())
+//       .then(data => {
+//         setTiles(data);
+//         setLoading(false);
+//       })
+//       .catch(() => setLoading(false));
+//   }, []);
+
+//   const marqueeText = '✦ New Arrivals: Ceramic Blue Tile · Weekly Feature: Modern Geometric · Join the Community · Premium Marble Collection · ';
+
+//   return (
+//     <div style={{ background: '#111827', minHeight: '100vh' }}>
+//       <Navbar />
+
+//       <section className="max-w-6xl mx-auto px-6 py-24 flex flex-col items-center text-center">
+//         <span className="text-xs uppercase tracking-widest mb-4 font-medium"
+//           style={{ color: '#C8A96E' }}>
+//           Tile Gallery
+//         </span>
+//         <h1 className="text-5xl md:text-6xl font-semibold mb-6 leading-tight text-white">
+//           Discover Your <br />
+//           <span style={{ color: '#C8A96E' }}>Perfect Aesthetic</span>
+//         </h1>
+//         <p className="text-base mb-10 max-w-md text-gray-400">
+//           Premium ceramic, marble & mosaic tiles for every space — curated with design in mind.
+//         </p>
+//         <Link href="/all-tiles"
+//           className="px-8 py-3 rounded-lg font-semibold text-sm"
+//           style={{ background: '#C8A96E', color: '#111827' }}>
+//           Browse Now →
+//         </Link>
+//       </section>
+
+//       <div className="overflow-hidden py-3" style={{ background: '#C8A96E' }}>
+//         <div className="marquee-inner">
+//           {[...Array(4)].map((_, i) => (
+//             <span key={i} className="text-sm font-medium px-8"
+//               style={{ color: '#111827' }}>
+//               {marqueeText}
+//             </span>
+//           ))}
+//         </div>
+//       </div>
+
+//       <section className="max-w-6xl mx-auto px-6 py-20">
+//         <div className="flex items-center justify-between mb-10">
+//           <div>
+//             <p className="text-xs uppercase tracking-widest mb-1"
+//               style={{ color: '#C8A96E' }}>Handpicked</p>
+//             <h2 className="text-2xl font-semibold text-white">Featured Tiles</h2>
+//           </div>
+//           <Link href="/all-tiles" className="text-sm"
+//             style={{ color: '#C8A96E' }}>
+//             View All →
+//           </Link>
+//         </div>
+
+//         {loading ? (
+//           <div className="flex justify-center py-20">
+//             <div className="w-8 h-8 border-2 border-gray-700 rounded-full animate-spin"
+//               style={{ borderTopColor: '#C8A96E' }}></div>
+//           </div>
+//         ) : tiles.length === 0 ? (
+//           <div className="text-center py-20 text-gray-500">
+//             <p>কোনো tile পাওয়া যায়নি</p>
+//           </div>
+//         ) : (
+//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+//             {tiles.map((tile) => (
+//               <TileCard key={tile.id} tile={tile} />
+//             ))}
+//           </div>
+//         )}
+//       </section>
+
+//       <Footer />
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+'use client';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import TileCard from '@/components/TileCard';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+export default function HomePage() {
+  const [tiles, setTiles] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/tiles')
+      .then(res => res.json())
+      .then(data => {
+        setTiles(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  const marqueeText = '✦ New Arrivals: Ceramic Blue Tile · Weekly Feature: Modern Geometric · Join the Community · Premium Marble Collection · ';
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div style={{ background: '#111827', minHeight: '100vh' }}>
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <section className="max-w-6xl mx-auto px-6 py-24 flex flex-col items-center text-center">
+        <span className="text-xs uppercase tracking-widest mb-4 font-medium"
+          style={{ color: '#C8A96E' }}>
+          Tile Gallery
+        </span>
+        <h1 className="text-5xl md:text-6xl font-semibold mb-6 leading-tight text-white">
+          Discover Your <br />
+          <span style={{ color: '#C8A96E' }}>Perfect Aesthetic</span>
+        </h1>
+        <p className="text-base mb-10 max-w-md text-gray-400">
+          Premium ceramic, marble & mosaic tiles for every space — curated with design in mind.
+        </p>
+        <Link href="/all-tiles"
+          className="px-8 py-3 rounded-lg font-semibold text-sm"
+          style={{ background: '#C8A96E', color: '#111827' }}>
+          Browse Now →
+        </Link>
+      </section>
+
+      <div className="overflow-hidden py-3" style={{ background: '#C8A96E' }}>
+        <div className="marquee-inner">
+          {[...Array(4)].map((_, i) => (
+            <span key={i} className="text-sm font-medium px-8"
+              style={{ color: '#111827' }}>
+              {marqueeText}
+            </span>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <div className="flex items-center justify-between mb-10">
+          <div>
+            <p className="text-xs uppercase tracking-widest mb-1"
+              style={{ color: '#C8A96E' }}>Handpicked</p>
+            <h2 className="text-2xl font-semibold text-white">Featured Tiles</h2>
+          </div>
+          <Link href="/all-tiles" className="text-sm"
+            style={{ color: '#C8A96E' }}>
+            View All →
+          </Link>
+        </div>
+
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <div className="w-8 h-8 border-2 border-gray-700 rounded-full animate-spin"
+              style={{ borderTopColor: '#C8A96E' }}></div>
+          </div>
+        ) : tiles.length === 0 ? (
+          <div className="text-center py-20 text-gray-500">
+            <p>কোনো tile পাওয়া যায়নি</p>
+          </div>
+        ) : (
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3000 }}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 4 },
+            }}
+            className="pb-10"
+          >
+            {tiles.map((tile) => (
+              <SwiperSlide key={tile.id}>
+                <TileCard tile={tile} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
+      </section>
+
+      <Footer />
     </div>
   );
 }
+
