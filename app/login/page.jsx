@@ -47,6 +47,7 @@ export default function LoginPage() {
                 <h1 className="text-2xl font-semibold text-white text-center mb-2">Welcome back</h1>
                 <p className="text-gray-400 text-sm text-center mb-8">Login to your account</p>
 
+
                 {error && (
                     <div className="mb-4 px-4 py-3 rounded-lg text-sm text-red-400"
                         style={{ background: '#7F1D1D' }}>
