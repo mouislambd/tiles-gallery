@@ -40,6 +40,7 @@ export default function RegisterPage() {
     const handleGoogle = async () => {
         await signIn.social({ provider: 'google', callbackURL: '/' });
     };
+    
 
     return (
         <div className="min-h-screen flex items-center justify-center px-4 py-10"
@@ -52,6 +53,7 @@ export default function RegisterPage() {
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center font-bold"
                         style={{ background: '#C8A96E', color: '#111827' }}>TG</div>
                 </div>
+
 
                 <h1 className="text-2xl font-semibold text-white text-center mb-2">Create account</h1>
                 <p className="text-gray-400 text-sm text-center mb-8">Join Tile Gallery today</p>
