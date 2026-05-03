@@ -10,9 +10,13 @@ export default function UpdateProfilePage() {
     const { data: session } = useSession();
     const user = session?.user;
     const router = useRouter();
+    const [name, setName] = useState('');
+    const [image, setImage] = useState('');
 
-    const [name, setName] = useState(user?.name || '');
-    const [image, setImage] = useState(user?.image || '');
+    // session load হলে update করো
+    if (user?.name && !name) setName(user.name);
+    if (user?.image && !image) setImage(user.image);
+
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
