@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 
 export function middleware(request) {
-    const session = request.cookies.get("better-auth.session_token");
+    const session =
+        request.cookies.get("better-auth.session_token") ||
+        request.cookies.get("__Secure-better-auth.session_token");
+
     const { pathname } = request.nextUrl;
 
     const privateRoutes = ["/my-profile", "/tile"];
@@ -9,7 +12,6 @@ export function middleware(request) {
     const isPrivate = privateRoutes.some((route) =>
         pathname.startsWith(route)
     );
-    
 
     if (isPrivate && !session) {
         return NextResponse.redirect(new URL("/login", request.url));
@@ -17,7 +19,6 @@ export function middleware(request) {
 
     return NextResponse.next();
 }
-
 
 export const config = {
     matcher: ["/my-profile/:path*", "/tile/:path*"],
