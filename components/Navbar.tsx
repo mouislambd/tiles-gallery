@@ -8,6 +8,7 @@ export default function Navbar() {
     const router = useRouter();
     const { data: session } = useSession();
 
+    
     const handleLogout = async () => {
         await signOut();
         router.push('/');

@@ -6,6 +6,7 @@ export default function Footer() {
             <div className="max-w-6xl mx-auto px-6 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
 
+
                     <div>
                         <div className="flex items-center gap-2 mb-3">
                             <div className="w-8 h-8 rounded flex items-center justify-center text-xs font-bold"
