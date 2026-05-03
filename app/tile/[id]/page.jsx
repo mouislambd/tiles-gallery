@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+
 export default function TileDetailPage() {
     const { id } = useParams();
     const [tile, setTile] = useState(null);
