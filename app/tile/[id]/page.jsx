@@ -13,7 +13,7 @@ export default function TileDetailPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/tiles/' + id)
+        fetch('/api/tiles')
             .then(res => res.json())
             .then(data => {
                 setTile(data);
