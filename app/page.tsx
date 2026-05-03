@@ -109,7 +109,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function HomePage() {
-  const [tiles, setTiles] = useState([]);
+  const [tiles, setTiles] = useState<{ id: string;[key: string]: any }[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -178,7 +178,7 @@ export default function HomePage() {
           </div>
         ) : tiles.length === 0 ? (
           <div className="text-center py-20 text-gray-500">
-            <p>কোনো tile পাওয়া যায়নি</p>
+            <p> tile </p>
           </div>
         ) : (
           <Swiper
