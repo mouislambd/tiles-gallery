@@ -1,0 +1,92 @@
+import { NextResponse } from "next/server";
+
+const tiles = [
+    {
+        id: "tile_001",
+        title: "Ceramic Blue Tile",
+        description: "Premium ceramic tile with rich blue glaze finish, perfect for bathrooms and kitchens.",
+        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
+        category: "ceramic",
+        price: 45.99,
+        currency: "USD",
+        dimensions: "60x60 cm",
+        material: "Ceramic",
+        inStock: true,
+        tags: ["Minimalist", "Blue", "Indoor", "Premium"],
+        creator: "TilesCo"
+    },
+    {
+        id: "tile_002",
+        title: "Marble White Classic",
+        description: "Elegant white marble tile with natural veining for luxury interiors.",
+        image: "https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=600",
+        category: "marble",
+        price: 89.99,
+        currency: "USD",
+        dimensions: "60x60 cm",
+        material: "Marble",
+        inStock: true,
+        tags: ["Luxury", "White", "Indoor", "Classic"],
+        creator: "MarbleCraft"
+    },
+    {
+        id: "tile_003",
+        title: "Terracotta Rustic",
+        description: "Warm terracotta tile with rustic earthy tones for a cozy Mediterranean feel.",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600",
+        category: "ceramic",
+        price: 38.50,
+        currency: "USD",
+        dimensions: "30x30 cm",
+        material: "Ceramic",
+        inStock: true,
+        tags: ["Rustic", "Warm", "Outdoor", "Mediterranean"],
+        creator: "EarthTiles"
+    },
+    {
+        id: "tile_004",
+        title: "Geometric Slate Gray",
+        description: "Modern geometric pattern slate tile for contemporary spaces.",
+        image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600",
+        category: "stone",
+        price: 55.00,
+        currency: "USD",
+        dimensions: "45x45 cm",
+        material: "Slate",
+        inStock: false,
+        tags: ["Modern", "Gray", "Indoor", "Geometric"],
+        creator: "StoneWorks"
+    },
+    {
+        id: "tile_005",
+        title: "Mosaic Ocean Green",
+        description: "Vibrant mosaic tile with ocean-inspired green tones for accent walls.",
+        image: "https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=600",
+        category: "mosaic",
+        price: 72.00,
+        currency: "USD",
+        dimensions: "30x30 cm",
+        material: "Glass",
+        inStock: true,
+        tags: ["Vibrant", "Green", "Accent", "Mosaic"],
+        creator: "ArtMosaic"
+    },
+    {
+        id: "tile_006",
+        title: "Hexagon Pearl White",
+        description: "Delicate hexagonal pearl white tile for elegant bathroom floors.",
+        image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600",
+        category: "ceramic",
+        price: 62.00,
+        currency: "USD",
+        dimensions: "20x20 cm",
+        material: "Ceramic",
+        inStock: true,
+        tags: ["Elegant", "White", "Bathroom", "Hexagon"],
+        creator: "PearlTiles"
+    }
+];
+
+export async function GET() {
+    return NextResponse.json(tiles);
+}

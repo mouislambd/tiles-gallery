@@ -113,7 +113,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/tiles')
+    fetch('/api/tiles')
       .then(res => res.json())
       .then(data => {
         setTiles(data);
