@@ -1,49 +1,18 @@
-// import { NextResponse } from "next/server";
-
-// export function middleware(request) {
-//     const session =
-//         request.cookies.get("better-auth.session_token") ||
-//         request.cookies.get("__Secure-better-auth.session_token");
-
-//     const { pathname } = request.nextUrl;
-
-//     const privateRoutes = ["/my-profile", "/tile"];
-
-//     const isPrivate = privateRoutes.some((route) =>
-//         pathname.startsWith(route)
-//     );
-
-//     if (isPrivate && !session) {
-//         return NextResponse.redirect(new URL("/login", request.url));
-//     }
-
-//     return NextResponse.next();
-// }
-
-// export const config = {
-//     matcher: ["/my-profile/:path*", "/tile/:path*"],
-// };
-
-
-
 import { NextResponse } from "next/server";
 
 export function middleware(request) {
-    const session =
-        request.cookies.get("better-auth.session_token") ||
-        request.cookies.get("__Secure-better-auth.session_token") ||
-        request.cookies.get("better-auth.session_token.0") ||
-        request.cookies.get("__Secure-better-auth.session_token.0");
+    const cookies = request.cookies.getAll();
+    const hasSession = cookies.some(c =>
+        c.name.includes('session') || c.name.includes('better-auth')
+    );
 
     const { pathname } = request.nextUrl;
 
-    const privateRoutes = ["/my-profile", "/tile"];
+    if (pathname.startsWith('/my-profile') && !hasSession) {
+        return NextResponse.redirect(new URL("/login", request.url));
+    }
 
-    const isPrivate = privateRoutes.some((route) =>
-        pathname.startsWith(route)
-    );
-
-    if (isPrivate && !session) {
+    if (pathname.startsWith('/tile/') && !hasSession) {
         return NextResponse.redirect(new URL("/login", request.url));
     }
 
