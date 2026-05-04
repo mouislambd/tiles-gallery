@@ -39,7 +39,7 @@ export default function MyProfilePage() {
                             width: 64, height: 64, borderRadius: '50%',
                             background: '#C8A96E', color: '#111827',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontSize: 22, fontWeight: 700, flexShrink: 0
+                            fontSize: 22, fontWeight: 700, flexShrink: 0, overflow: 'hidden'
                         }}>
                             {user?.image ? <img src={user.image} style={{ width: 64, height: 64, borderRadius: '50%', objectFit: 'cover' }} /> : initials}
                         </div>
@@ -58,7 +58,7 @@ export default function MyProfilePage() {
                     </div>
                     <div style={{ marginBottom: 32 }}>
                         <div style={{ color: '#6B7280', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>Photo URL</div>
-                        <div style={{ background: '#111827', borderRadius: 8, padding: '12px 16px', color: '#6B7280', fontSize: 14 }}>{user?.image || 'No photo set'}</div>
+                        <div style={{ background: '#111827', borderRadius: 8, padding: '12px 16px', color: '#6B7280', fontSize: 14, wordBreak: 'break-all' }}>{user?.image || 'No photo set'}</div>
                     </div>
                     <Link href="/my-profile/update"
                         style={{ background: '#C8A96E', color: '#111827', padding: '12px 24px', borderRadius: 8, fontWeight: 600, fontSize: 14, display: 'inline-block', textDecoration: 'none' }}>
