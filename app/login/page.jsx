@@ -32,6 +32,7 @@ export default function LoginPage() {
         await signIn.social({ provider: 'google', callbackURL: '/' });
     };
 
+
     return (
         <div className="min-h-screen flex items-center justify-center px-4"
             style={{ background: '#111827' }}>
